@@ -4,7 +4,7 @@ class Settings:
     def __init__(self):
         self.screen_width = 1200
         self.screen_height = 800
-        self.bg_background = pygame.image.load('background.png')
+        self.bg_background = pygame.image.load('images/background.png')
         self.bg_color = (255, 255, 255)
         self.bg_sb_color = (30, 30, 30)
         

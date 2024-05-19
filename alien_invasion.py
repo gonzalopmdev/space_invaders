@@ -16,7 +16,7 @@ class AlienInvasion:
         self.clock = pygame.time.Clock()
         self.settings = Settings()
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
-        self.bg_background = pygame.image.load('background.png')
+        self.bg_background = pygame.image.load('images/background.png')
         
          #Crea una instancia para guardar las estadísticas del juego
         self.stats = GameStats(self)  
@@ -57,6 +57,7 @@ class AlienInvasion:
             
             #Disminuye ships_left
             self.stats.ships_left -= 1
+            self.sb.prep_ships()
             #Se deshace de los aliens y balas restantes
             self.aliens.empty()
             self.bullets.empty()
@@ -94,7 +95,11 @@ class AlienInvasion:
         if not self.aliens:
                 self.bullets.empty()
                 self._create_fleet()  
-                self.settings.increase_speed()  
+                self.settings.increase_speed()
+                
+                #Aumenta el nivel
+                self.stats.level += 1
+                self.sb.prep_level()
                           
     def _update_aliens(self):
         self._check_fleet_edges()
